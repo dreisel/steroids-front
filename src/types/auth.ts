@@ -1,9 +1,9 @@
 export interface LoginRequest {
-    username: string;
-    password: string;
+  username: string;
+  password: string;
 }
 
 export interface User {
-    name: string;
-    avatar: string
+  name: string;
+  avatar: string;
 }

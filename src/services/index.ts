@@ -10,11 +10,11 @@ let todoService: TodoService;
 
 // todo: remove logic from code and move to build time resolution
 if (process.env.NODE_ENV === 'development') {
-    authService = new MockAuthService(apiService);
-    todoService = new MockTodoService(apiService);
+  authService = new MockAuthService(apiService);
+  todoService = new MockTodoService(apiService);
 } else {
-    authService = new AuthService(apiService);
-    todoService = new TodoService(apiService);
+  authService = new AuthService(apiService);
+  todoService = new TodoService(apiService);
 }
 
 export { apiService, authService, todoService };
