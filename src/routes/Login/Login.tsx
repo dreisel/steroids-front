@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import '../../components/App/App.css';
-import {AppContext} from "../../context/AppContext";
+import {AppContext} from '../../context/AppContext';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 import {authService} from '../../services';
 

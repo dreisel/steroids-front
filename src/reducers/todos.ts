@@ -1,5 +1,5 @@
-import {ADD_TODO, COMPLETE_TODO, DELETE_TODO, SET_TODOS, ToDosActionTypes} from "../types/actions/todos";
-import {ToDo} from "../types/todos";
+import {ADD_TODO, COMPLETE_TODO, DELETE_TODO, SET_TODOS, ToDosActionTypes} from '../types/actions/todos';
+import {ToDo} from '../types/todos';
 
 export interface TodosState {
     todos: ToDo[];

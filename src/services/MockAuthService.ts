@@ -1,5 +1,5 @@
-import AuthService from "./AuthService";
-import {LoginRequest, User} from "../types/auth";
+import AuthService from './AuthService';
+import {LoginRequest, User} from '../types/auth';
 
 export default class MockAuthService extends AuthService {
 

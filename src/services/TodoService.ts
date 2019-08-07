@@ -1,5 +1,5 @@
-import ConnectedService from "./ConnectedService";
-import {CreateToDoRequest, ToDo} from "../types/todos";
+import ConnectedService from './ConnectedService';
+import {CreateToDoRequest, ToDo} from '../types/todos';
 
 
 export default class TodoService extends ConnectedService {

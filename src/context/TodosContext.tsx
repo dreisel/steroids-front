@@ -1,8 +1,8 @@
 import React, {useReducer, useState} from 'react';
 import {todoService} from '../services';
-import {toDosReducer} from "../reducers/todos";
+import {toDosReducer} from '../reducers/todos';
 import * as TodoActions from '../actions/todos';
-import {ToDo} from "../types/todos";
+import {ToDo} from '../types/todos';
 
 export interface ITodosContext {
     isLoading: boolean

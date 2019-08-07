@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {apiService, authService} from '../services';
-import {User} from "../types/auth";
+import {User} from '../types/auth';
 
 interface IAppContext {
     isLoading: boolean

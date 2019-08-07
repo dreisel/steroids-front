@@ -23,7 +23,8 @@
   "eslintConfig": {
     "extends": "react-app",
     "rules": {
-      "semi": "error"
+      "semi": "error",
+      "quotes": [2, "single"]
     }
   },
   "browserslist": {

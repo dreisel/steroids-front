@@ -1,8 +1,8 @@
-import ApiService from "./ApiService";
-import AuthService from "./AuthService";
-import TodoService from "./TodoService";
-import MockAuthService from "./MockAuthService";
-import MockTodoService from "./MockTodoService";
+import ApiService from './ApiService';
+import AuthService from './AuthService';
+import TodoService from './TodoService';
+import MockAuthService from './MockAuthService';
+import MockTodoService from './MockTodoService';
 
 const apiService = new ApiService();
 let authService: AuthService;

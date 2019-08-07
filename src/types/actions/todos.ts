@@ -1,4 +1,4 @@
-import {ToDo} from "../todos";
+import {ToDo} from '../todos';
 
 export const SET_TODOS = 'SET_TODOS';
 export const ADD_TODO = 'ADD_TODO';

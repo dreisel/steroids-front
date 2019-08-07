@@ -1,5 +1,5 @@
-import ConnectedService from "./ConnectedService";
-import {LoginRequest, User} from "../types/auth";
+import ConnectedService from './ConnectedService';
+import {LoginRequest, User} from '../types/auth';
 
 export default class AuthService extends ConnectedService {
 

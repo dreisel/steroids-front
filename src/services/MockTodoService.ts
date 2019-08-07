@@ -1,5 +1,5 @@
-import TodoService from "./TodoService";
-import {CreateToDoRequest, ToDo} from "../types/todos";
+import TodoService from './TodoService';
+import {CreateToDoRequest, ToDo} from '../types/todos';
 
 const delay = async (seconds: number): Promise<void> => {
     return new Promise<void>((resolve => {
@@ -15,11 +15,9 @@ export default class MockTodoService extends TodoService {
     }
 
     public async addTodo({ name }: CreateToDoRequest): Promise<ToDo> {
-        console.log('adding todo', name);
         await delay(3); // just to get a nicer feeling...
         const todo = { id: Math.random().toString(), name, completed: false };
         this.todos = [...this.todos, todo];
-        console.log(this.todos);
         return todo;
     }
 

@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import '../../components/App/App.css';
-import {TodoContext, ITodosContext} from "../../context/TodosContext";
+import {TodoContext, ITodosContext} from '../../context/TodosContext';
 
 const Todos: React.FC<{}> = () => {
     const { todos, isLoading, addTodo, completeTodo, deleteTodo} = useContext<ITodosContext>(TodoContext);
