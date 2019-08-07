@@ -16,7 +16,7 @@ const Todos: React.FC<{}> = () => {
             <h1>My Todo List</h1>
             {isLoading && <h3>Loading</h3>}
             <div>
-                <input value={name} onChange={(e) => setName(e.target.value)} placeholder={'Add Todo'}/>
+                <input value={name} onChange={(e) => !isLoading && setName(e.target.value)} placeholder={'Add Todo'}/>
                 <button onClick={onAddClick} disabled={isLoading}>Add</button>
             </div>
             {todos.map(({ id, name, completed }) => (

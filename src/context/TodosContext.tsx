@@ -22,6 +22,8 @@ export const TodoContextProvider: React.FC<{}> = ({ children }) => {
             setLoading(true);
             await todoService.deleteTodo(id);
             dispatch(TodoActions.deleteTodo(id));
+        } catch (e) {
+
         } finally {
             setLoading(false);
         }
@@ -33,9 +35,11 @@ export const TodoContextProvider: React.FC<{}> = ({ children }) => {
             setLoading(true);
             const todo = todos.find(t => t.id === id);
             if (todo && !todo.completed) {
-                await todoService.updateTodo({ ...todo, completed: true });
+                await todoService.updateTodo({...todo, completed: true});
             }
             dispatch(TodoActions.completeTodo(id));
+        } catch (e) {
+
         } finally {
             setLoading(false);
         }
@@ -47,6 +51,8 @@ export const TodoContextProvider: React.FC<{}> = ({ children }) => {
             setLoading(true);
             const todo = await todoService.addTodo({ name });
             dispatch(TodoActions.addTodo(todo));
+        } catch (e) {
+
         } finally {
             setLoading(false);
         }

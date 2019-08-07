@@ -1,14 +1,15 @@
 import ApiServiceBase from "./ApiServiceBase";
-import {LoginRequest} from "../types/auth";
+import {LoginRequest, User} from "../types/auth";
 
 export default class AuthService extends ApiServiceBase {
 
-    public async login(form: LoginRequest): Promise<boolean> {
-        try {
-            await this.apiService.post<boolean>('/login', { form });
-        } catch (e) {
-            return false;
-        }
-        return true;
+    public async login(form: LoginRequest): Promise<User> {
+        const user = await this.apiService.post<User>('/login', {form});
+        return user;
+    }
+
+    public async getUser(): Promise<User> {
+        const user = await this.apiService.get<User>('/me');
+        return user;
     }
 }

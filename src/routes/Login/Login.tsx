@@ -5,17 +5,17 @@ import {withRouter, RouteComponentProps} from 'react-router-dom';
 import {authService} from '../../services';
 
 const Login: React.FC<RouteComponentProps> = ({ history }) => {
-    const { setAuthenticated } = useContext(AppContext);
+    const { setUser } = useContext(AppContext);
     const [error, setError] = useState<string | null>(null);
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
     async function onSubmit() {
-        const loginResponse = await authService.login({ username, password });
-        setAuthenticated(loginResponse);
-        if (loginResponse) {
+        try {
+            const user = await authService.login({ username, password });
+            setUser(user);
             history.push('/');
-        } else {
+        } catch (e) {
             setError('Invalid UserNAme OR Password');
         }
     }

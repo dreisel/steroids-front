@@ -6,11 +6,11 @@ interface AuthenticatedRouteProps extends RouteProps {
     render: ((props: RouteComponentProps<any>) => React.ReactNode);
 }
 const AuthenticatedRoute: React.FC<AuthenticatedRouteProps> =  ({ render, ...routeProps }) => {
-  const { authenticated } = useContext(AppContext);
+  const { user } = useContext(AppContext);
   return (
     <Route
       {...routeProps}
-      render={(props) => (authenticated ?
+      render={(props) => (user ?
         render(props) :
         <Redirect to='/login' />)
       }

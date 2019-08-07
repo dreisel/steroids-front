@@ -1,31 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import { apiService } from '../services';
-
-const isInitiallyAuthenticated: boolean = !!localStorage.getItem('isAuthenticated');
+import {apiService, authService} from '../services';
+import {User} from "../types/auth";
 
 interface IAppContext {
-    setAuthenticated(status: boolean): void
-    authenticated: boolean
+    isLoading: boolean
+    setUser(user: User): void
+    user?: User
 }
 
 export const AppContext = React.createContext<IAppContext>({} as IAppContext);
 
 export const AppContextProvider: React.FC<{}> = ({ children }) => {
-    const [ authenticated, setAuthenticated ] = useState<boolean>(isInitiallyAuthenticated);
+    const [ user, setUser] = useState<User>();
+    const [ isLoading, setLoading] = useState<boolean>(true);
+
+    async function getUser() {
+        setLoading(true);
+        try {
+            const user = await authService.getUser();
+            setUser(user);
+        } catch (e) {
+
+        } finally {
+            setLoading(false);
+        }
+    }
 
     useEffect(() => {
         apiService.subscribeToUnauthorized(() => {
-            setAuthenticated(false);
+            setUser(undefined);
         });
+        getUser();
     }, []);
 
-    useEffect(() => {
-        localStorage.setItem('isAuthenticated', Date.now().toString());
-    }, [authenticated]);
     return <AppContext.Provider
         value={{
-            authenticated,
-            setAuthenticated,
+            isLoading,
+            user,
+            setUser,
         }}
     >
         {children}
