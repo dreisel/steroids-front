@@ -1,7 +1,7 @@
-import ApiServiceBase from "./ApiServiceBase";
+import ConnectedService from "./ConnectedService";
 import {LoginRequest, User} from "../types/auth";
 
-export default class AuthService extends ApiServiceBase {
+export default class AuthService extends ConnectedService {
 
     public async login(form: LoginRequest): Promise<User> {
         const user = await this.apiService.post<User>('/login', {form});

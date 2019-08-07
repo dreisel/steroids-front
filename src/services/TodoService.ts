@@ -1,8 +1,8 @@
-import ApiServiceBase from "./ApiServiceBase";
+import ConnectedService from "./ConnectedService";
 import {CreateToDoRequest, ToDo} from "../types/todos";
 
 
-export default class TodoService extends ApiServiceBase {
+export default class TodoService extends ConnectedService {
 
     public async getTodos(): Promise<ToDo[]> {
         const todos: ToDo[] = await this.apiService.get<ToDo[]>('/todos');
