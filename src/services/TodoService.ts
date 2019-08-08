@@ -17,10 +17,7 @@ export default class TodoService extends ConnectedService {
   }
 
   public async updateTodo(todo: ToDo): Promise<ToDo> {
-    const updatedTodo: ToDo = await this.apiService.put<ToDo>(
-      '/todos/' + todo.id,
-      todo
-    );
+    const updatedTodo: ToDo = await this.apiService.put<ToDo>('/todos/' + todo.id, todo);
     return updatedTodo;
   }
 }

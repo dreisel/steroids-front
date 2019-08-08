@@ -10,9 +10,7 @@ export interface ITodosContext {
   todos: ToDo[];
 }
 
-export const TodoContext = React.createContext<ITodosContext>(
-  {} as ITodosContext
-);
+export const TodoContext = React.createContext<ITodosContext>({} as ITodosContext);
 
 export const TodoContextProvider: React.FC<{}> = ({ children }) => {
   const [isLoading, deleteTodo, completeTodo, addTodo, todos] = useTodos();

@@ -16,15 +16,11 @@ export default class ApiService {
   }
 
   public post<T>(url: string, data: object) {
-    return this.call<T>(
-      new Request(url, { method: 'post', body: JSON.stringify(data) })
-    );
+    return this.call<T>(new Request(url, { method: 'post', body: JSON.stringify(data) }));
   }
 
   public put<T>(url: string, data: object) {
-    return this.call<T>(
-      new Request(url, { method: 'put', body: JSON.stringify(data) })
-    );
+    return this.call<T>(new Request(url, { method: 'put', body: JSON.stringify(data) }));
   }
 
   public delete<T>(url: string) {

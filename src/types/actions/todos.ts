@@ -22,8 +22,4 @@ export interface DeleteTodoAction {
   todos: ToDo[];
 }
 
-export type ToDosActionTypes =
-  | SetTodoAction
-  | AddTodoAction
-  | CompleteTodoAction
-  | DeleteTodoAction;
+export type ToDosActionTypes = SetTodoAction | AddTodoAction | CompleteTodoAction | DeleteTodoAction;

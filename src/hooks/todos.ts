@@ -4,21 +4,13 @@ import { todoService } from '../services';
 import * as TodoActions from '../actions/todos';
 import { ToDo } from '../types/todos';
 
-type UseTodos = [
-  boolean,
-  (id: string) => Promise<void>,
-  (id: string) => Promise<void>,
-  (name: string) => Promise<void>,
-  ToDo[]
-];
+type UseTodos = [boolean, (id: string) => Promise<void>, (id: string) => Promise<void>, (name: string) => Promise<void>, ToDo[]];
 
 export function useTodos(): UseTodos {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [{ todos }, dispatch] = useReducer(toDosReducer, { todos: [] });
 
-  function withSafeLoading(
-    task: (...args: any[]) => Promise<void>
-  ): () => Promise<void> {
+  function withSafeLoading(task: (...args: any[]) => Promise<void>): () => Promise<void> {
     return async (...args) => {
       if (isLoading) return;
       try {
@@ -49,11 +41,5 @@ export function useTodos(): UseTodos {
     dispatch(TodoActions.addTodo(todo));
   }
 
-  return [
-    isLoading,
-    withSafeLoading(deleteTodo),
-    withSafeLoading(completeTodo),
-    withSafeLoading(addTodo),
-    todos
-  ];
+  return [isLoading, withSafeLoading(deleteTodo), withSafeLoading(completeTodo), withSafeLoading(addTodo), todos];
 }
