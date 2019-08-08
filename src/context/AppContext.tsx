@@ -10,7 +10,7 @@ interface IAppContext {
 
 export const AppContext = React.createContext<IAppContext>({} as IAppContext);
 
-export const AppContextProvider: React.FC<{}> = ({ children }) => {
+export const AppContextProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<User>();
   const [isLoading, setLoading] = useState<boolean>(true);
 
