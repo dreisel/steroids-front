@@ -1,27 +1,15 @@
-import { useState, useReducer } from 'react';
+import { useReducer } from 'react';
 import { toDosReducer } from '../reducers/todos';
 import { todoService } from '../services';
 import * as TodoActions from '../actions/todos';
 import { ToDo } from '../types/todos';
+import { useSafeAsyncTaskWithLoading } from './utils';
 
 type UseTodos = [boolean, (id: string) => Promise<void>, (id: string) => Promise<void>, (name: string) => Promise<void>, ToDo[]];
 
 export function useTodos(): UseTodos {
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const [isLoading, withSafeLoading] = useSafeAsyncTaskWithLoading();
   const [{ todos }, dispatch] = useReducer(toDosReducer, { todos: [] });
-
-  function withSafeLoading(task: (...args: any[]) => Promise<void>): () => Promise<void> {
-    return async (...args) => {
-      if (isLoading) return;
-      try {
-        setLoading(true);
-        await task(args);
-      } catch (e) {
-      } finally {
-        setLoading(false);
-      }
-    };
-  }
 
   async function deleteTodo(id: string): Promise<void> {
     await todoService.deleteTodo(id);
